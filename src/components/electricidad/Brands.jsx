@@ -9,59 +9,45 @@ const brands = [
 
 export default function Brands() {
   return (
-    <section className="py-20 bg-background relative overflow-hidden">
-      {/* Background ambient light */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-[300px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl font-bold mb-4"
-          >
-            Nuestras Principales Marcas
-          </motion.h2>
-          <motion.div 
-            initial={{ opacity: 0, scaleX: 0 }}
-            whileInView={{ opacity: 1, scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-1 w-24 bg-primary mx-auto rounded-full"
-          />
-        </div>
+    <section className="py-14 border-y border-border bg-zinc-100 dark:bg-zinc-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Título */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400 mb-10"
+        >
+          Nuestras Principales Marcas
+        </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center max-w-5xl mx-auto">
+        {/* Logos en línea horizontal */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-10 sm:gap-16">
           {brands.map((brand, index) => (
             <motion.div
               key={brand.name}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 0 20px rgba(var(--primary), 0.2)"
-              }}
-              className="bg-foreground/5 backdrop-blur-md rounded-2xl p-8 h-40 flex items-center justify-center border border-foreground/10 transition-colors hover:border-primary/50 group cursor-pointer"
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              className="flex items-center justify-center w-44 h-20 group"
             >
-              <div className="relative w-full h-full flex items-center justify-center">
-                {/* Fallback text if image fails to load, otherwise the image is shown */}
-                <img 
-                  src={brand.logo} 
-                  alt={`Logo de ${brand.name}`}
-                  className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 opacity-70 group-hover:opacity-100"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.nextSibling.style.display = 'block';
-                  }}
-                />
-                <span className="hidden text-2xl font-bold tracking-wider text-foreground/80 group-hover:text-primary transition-colors">
-                  {brand.name}
-                </span>
-              </div>
+              <img
+                src={brand.logo}
+                alt={`Logo de ${brand.name}`}
+                className="max-w-full max-h-full object-contain
+                           opacity-60 grayscale
+                           group-hover:opacity-100 group-hover:grayscale-0
+                           transition-all duration-400"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'block';
+                }}
+              />
+              <span className="hidden text-lg font-bold text-zinc-600 dark:text-zinc-300 tracking-wider">
+                {brand.name}
+              </span>
             </motion.div>
           ))}
         </div>

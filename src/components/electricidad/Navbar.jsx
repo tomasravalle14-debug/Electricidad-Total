@@ -7,6 +7,7 @@ import { useCart } from '@/context/CartContext';
 const navLinks = [
   { label: 'Inicio', to: '/' },
   { label: 'Catálogo', to: '/', hash: '#catalogo' },
+  { label: 'Ofertas', to: '/', hash: '#ofertas', highlight: true },
   { label: 'Categorías', to: '/categorias' },
   { label: 'Beneficios', to: '/beneficios' },
   { label: 'Presupuestos', to: '/presupuestos' },
@@ -84,11 +85,13 @@ export default function Navbar({ logoUrl }) {
                   to={link.hash ? '/' + link.hash : link.to}
                   onClick={(e) => handleClick(link, e)}
                   className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
-                    isActive
-                      ? 'text-primary bg-accent'
-                      : isTransparent
-                        ? 'text-white/80 hover:text-white hover:bg-white/10'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                    link.highlight
+                      ? 'text-orange-400 hover:text-orange-300 hover:bg-orange-500/10 font-semibold'
+                      : isActive
+                        ? 'text-primary bg-accent'
+                        : isTransparent
+                          ? 'text-white/80 hover:text-white hover:bg-white/10'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                   }`}
                 >
                   {link.label}
