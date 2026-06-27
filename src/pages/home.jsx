@@ -11,6 +11,8 @@ import StoreInfo from '../components/electricidad/StoreInfo';
 import WhatsAppButton from '../components/electricidad/WhatsAppButton';
 import Footer from '../components/electricidad/Footer';
 import CartDrawer from '../components/electricidad/CartDrawer';
+import Brands from '../components/electricidad/Brands';
+import Offers from '../components/electricidad/Offers';
 
 const LOGO_URL = 'https://media.base44.com/images/public/6a0dc1d45330cdee8bb9cb7c/74a4d8d67_fiori.jpg';
 const LIGHTING_IMAGE = 'https://media.base44.com/images/public/6a0dc1d45330cdee8bb9cb7c/c9d25b79a_generated_5ed0126c.png';
@@ -81,6 +83,8 @@ function MainPage() {
       <HeroSection />
       <Categories lightingImage={LIGHTING_IMAGE} electricalImage={ELECTRICAL_IMAGE} />
       <ProductCatalog products={PRODUCTS} />
+      <Offers />
+      <Brands />
       <StoreInfo />
     </>
   );
